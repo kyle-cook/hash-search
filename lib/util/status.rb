@@ -1,21 +1,21 @@
-class HashSearch
+module HashSearch
 
-class Status
+    class Status
 
-    @@Statuses = [
-        "UNKNOWN",
-        "WL-PUBLIC",
-        "BL-PUBLIC",
-        "WL-PRIVATE",
-        "BL-PRIVATE",
-        "KNOWN_GOOD",
-        "KNOWN_BAD"
-    ]
+        @@Statuses = [
+            "UNKNOWN",
+            "WL-PUBLIC",
+            "BL-PUBLIC",
+            "WL-PRIVATE",
+            "BL-PRIVATE",
+            "KNOWN_GOOD",
+            "KNOWN_BAD"
+        ]
 
-    def self.RandomStatus
-        @@Statuses.sample
+        def self.RandomStatus
+            @@Statuses.sample
+        end
+
     end
-
-end
 
 end

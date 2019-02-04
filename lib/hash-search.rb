@@ -3,23 +3,31 @@ require_relative 'util/names.rb'
 require_relative 'util/reason.rb'
 require_relative 'util/status.rb'
 
-class HashSearch
+require 'redis'
+require 'sinatra'
 
-    # The hello goodbye ruby boiler plate
-    #
-    # Example:
-    #   >> Speak.helloworld
-    #   => "Hello World"
+configure do
+    set :bind, '0.0.0.0'
+    set :port, 80
+end
 
-    def self.helloworld
-        "Hello World!"
+module HashSearch
+
+    class HashSearchApp < Sinatra::Base
+        configure do
+            set :bind, '0.0.0.0'
+            set :port, 80
+        end
+
+        redis = Redis.new
+
+        get '/' do
+            erb :index
+        end
+
     end
 
-    def self.goodbyeworld
-        "Goodbye World!"
-    end
-
-    def self.RandomEntry
+    def RandomEntry
         [
             HashSearch::Hash.RandomHash,
             HashSearch::Names.RandomName,
@@ -29,3 +37,5 @@ class HashSearch
     end
 
 end
+
+#HashSearch::HashSearchApp.run!
